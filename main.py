@@ -72,8 +72,8 @@ def test_get_longest_concat_digit_count_asc():
 
 def afisare_meniu():
     print("1. Citire lista")
-    print("2. Determina cea mai lunga subsecventa in care produsul numerelor este numar impar.- ex. 9")
-    print("3. Determina cea mai lunga subsecventa in care concatenarea nr. are cifrele in ordine crescatoare.- ex. 19")
+    print("2. Determina cea mai lunga subsecventa in care produsul numerelor este numar impar.- ex.9")
+    print("3. Determina cea mai lunga subsecventa in care concatenarea nr. are cifrele in ordine crescatoare.- ex.19")
     print("x. Iesire.")
 
 
