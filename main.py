@@ -58,6 +58,40 @@ def get_longest_concat_digit_count_asc(lst):
     return subsecventa_max
 
 
+def ordine_crescatoare(lst):
+    """
+    Verifica daca numerele din lista sunt ordonate crescator.
+    :param lst: o lista de nr. intregi
+    :return: True daca numerele din lista sunt ordonate crescator sau False in caz contrar
+    """
+    i = 0
+    while i < len(lst) - 1:
+        if lst[i] > lst[i+1]:
+            return False
+        i = i + 1
+    return True
+
+
+def get_longest_sorted_asc(lst):
+    """
+    Determina cea mai lunga subsecventa in care numerele sunt ordonate crescator.
+    :param lst: o lista de nr. intregi
+    :return: cea mai lunga subsecventa continand numere ordonate crescator
+    """
+    subsecventa_max = []
+    for i in range(len(lst)):
+        for j in range(i, len(lst)):
+            if ordine_crescatoare(lst[i:j + 1]) and len(lst[i:j + 1]) > len(subsecventa_max):
+                subsecventa_max = lst[i:j + 1]
+    return subsecventa_max
+
+
+def test_get_longest_sorted_asc():
+    assert get_longest_sorted_asc([]) == []
+    assert get_longest_sorted_asc([-1, 0, 0, -2]) == [-1, 0, 0]
+    assert get_longest_sorted_asc([4, 5, 3, 4, 7]) == [3, 4, 7]
+
+
 def test_get_longest_product_is_odd():
     assert get_longest_product_is_odd([]) == []
     assert get_longest_product_is_odd([2, 4, 6]) == []
@@ -74,6 +108,7 @@ def afisare_meniu():
     print("1. Citire lista")
     print("2. Determina cea mai lunga subsecventa in care produsul numerelor este numar impar.- ex.9")
     print("3. Determina cea mai lunga subsecventa in care concatenarea nr. are cifrele in ordine crescatoare.- ex.19")
+    print("4.Determina cea mai lunga subsecventa in care numerele sunt ordonate crescator.-ex.4")
     print("x. Iesire.")
 
 
@@ -96,6 +131,8 @@ def main():
             print(get_longest_product_is_odd(lst))
         elif optiune == "3":
             print(get_longest_concat_digit_count_asc(lst))
+        elif optiune == "4":
+            print(get_longest_sorted_asc(lst))
         elif optiune == "x":
             break
         else:
@@ -104,4 +141,5 @@ def main():
 
 test_get_longest_product_is_odd()
 test_get_longest_concat_digit_count_asc()
+test_get_longest_sorted_asc()
 main()
